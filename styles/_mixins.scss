@@ -1,0 +1,37 @@
+$breakpoint-mobile: 576px;
+
+// Breakpoints :
+// small tablets & large smartphones (landcape view)
+@mixin mobile-only {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+// General Layout
+@mixin layout($maxWidth: 1400px) {
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: $maxWidth;
+}
+@mixin radius($value: $borderRaduis) {
+  border-radius: $value;
+}
+// PADDING
+@mixin padding($value: 1rem) {
+  padding: $value;
+}
+@mixin paddingX($value: 1rem) {
+  padding-left: $value;
+  padding-right: $value;
+}
+// FLEXBOX
+@mixin flex($justify: false, $align: center) {
+  display: flex;
+  align-items: $align;
+  gap: 1rem;
+
+  @if ($justify) {
+    justify-content: $justify;
+  }
+  @content;
+} ;

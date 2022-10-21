@@ -1,0 +1,61 @@
+@use 'mixins' as *;
+@use 'animation' as *;
+
+// mobile-only (576px and more)
+@include mobile-only {
+  article {
+    @include paddingX(2.4rem);
+
+    #logo {
+      width: 6rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    .subscribe {
+      width: 90%;
+      margin-bottom: 6rem;
+      flex-direction: column;
+
+      input {
+        @include padding(1.1rem);
+        @include paddingX(2.4rem);
+        font-size: 1.3rem;
+      }
+      .empty-email-message,
+      .invalid-email-message {
+        position: relative;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        top: 0;
+        left: 0;
+        animation: error-message-mobile 1s;
+      }
+      button {
+        width: 100%;
+        @include padding(1.1rem);
+        font-size: 1.3rem;
+      }
+    }
+    .illustration {
+      margin-bottom: 12rem;
+    }
+    .social-media {
+      ul {
+        li {
+          a {
+            width: 3rem;
+            height: 3rem;
+            svg {
+              width: 2.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

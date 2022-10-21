@@ -1,0 +1,165 @@
+@use 'boilerplate' as *;
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'animation' as *;
+@use 'mobile' as *;
+
+main {
+  @include flex(center);
+  @include layout;
+  min-height: 100vh;
+
+  article {
+    color: var(--col-text);
+    @include flex(center);
+    flex-direction: column;
+    max-width: 580px;
+    width: 100%;
+
+    // opaque cover screen with confirmation window
+    .opaque {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: none;
+    }
+  }
+}
+#logo {
+  width: 8rem;
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+}
+h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  span {
+    color: var(--col-text-heading);
+    font-weight: 700;
+  }
+}
+p {
+  font-size: 1.7rem;
+  color: var(--col-text-heading);
+  margin-bottom: 2.4rem;
+}
+
+.subscribe {
+  @include flex;
+  margin-bottom: 7rem;
+  width: 100%;
+  position: relative;
+
+  input {
+    width: 100%;
+    outline: none;
+    @include padding(1.6rem);
+    @include paddingX(2.2rem);
+    @include radius;
+    border: 0.5px solid var(--col-input);
+    color: var(--col-text-heading);
+    font-size: 1.6rem;
+
+    &::placeholder {
+      color: var(--col-input);
+    }
+  }
+
+  // error messages
+  .empty-email-message,
+  .invalid-email-message {
+    position: absolute;
+    color: var(--col-error);
+    top: 6rem;
+    left: 2.2rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    animation: error-message 2s;
+    display: none;
+  }
+  // confirmation message
+  .confirm {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    @include padding(5rem);
+    @include radius(1rem);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--col-primary);
+    background-color: var(--col-input);
+    animation: appear 1s;
+    display: none;
+  }
+  button {
+    @include padding(1.6rem);
+    @include radius;
+    background-color: var(--col-primary);
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: white;
+    width: 50%;
+    border: none;
+    box-shadow: 0 0.8rem 1rem rgba(79, 125, 243, 0.2);
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--col-primary-hover);
+    }
+
+    &:active {
+      transform: scale(0.98) translateY(2px);
+      box-shadow: 0 1.5rem 1.5rem rgba(79, 125, 243, 0.2);
+    }
+  }
+}
+
+.illustration {
+  margin-bottom: 4.8rem;
+}
+.social-media {
+  margin-bottom: 1.2rem;
+
+  ul {
+    @include flex;
+    list-style: none;
+
+    li {
+      a {
+        display: inline-block;
+        border: 0.5px solid var(--col-input);
+        @include radius;
+        width: 2.8rem;
+        height: 2.8rem;
+        @include flex(center);
+
+        &:hover {
+          border: none;
+          background-color: var(--col-primary);
+
+          & svg {
+            fill: white;
+          }
+        }
+        &:active {
+          transform: scale(0.9);
+        }
+        svg {
+          width: 1.8rem;
+          background-color: transparent;
+          fill: var(--col-primary);
+        }
+      }
+    }
+  }
+}
+.copyrigth {
+  font-size: 1rem;
+  color: var(--col-text);
+}
